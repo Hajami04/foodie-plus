@@ -182,3 +182,27 @@
     border-right-color: var(--border);
   }
 }
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.search-input {
+  width: 250px;
+  height: 40px;
+  padding: 10px;
+}
+
+.restaurant-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.top-rated-btn {
+  width: 250px;
+  height: 40px;
+  padding: 10px;
+}

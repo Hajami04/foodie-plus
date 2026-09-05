@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import "./App.css";
 import RestaurantCard from "./components/RestaurantCard";
 
 function App() {
@@ -28,37 +29,27 @@ const [searchText, setSearchText] = useState ("");
 const [showTopRated, setShowTopRated] = useState(false);
 
 return (
-    <div style={{
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "20px",
-    marginBottom: "30px",
-  }}>
+    <div>
+        <div className="header">
 
         
     <h1>Foodie+</h1>
 
     
-    <input style={{
-  width: "250px",
-  height: "20px",
-  padding: "10px",
-}}
+    <input className="search-input"
     type="text"
     value={searchText}
     onChange={(e) => setSearchText(e.target.value)}
     placeholder="Search restaurants"
     />
-    <button  style={{
-  width: "250px",
-  height: "40px",
-  padding: "10px",
-}}
+    <button  className="top-rated-btn"
     
     onClick={() => setShowTopRated(!showTopRated)}>
     Top Rated
 </button>
+</div>
+
+<div className="restaurant-grid">
 {restaurants
   .filter((restaurant) => {
     if (
@@ -80,6 +71,7 @@ return (
       deliveryTime={restaurant.deliveryTime}
     />
   ))}
+    </div>
     </div>
     
 );
