@@ -1,13 +1,11 @@
+import "./RestaurantCard.css";
+
+
+
 function RestaurantCard({ name, rating, deliveryTime }) {
 return (
     <div
-    style={{
-        border: "1px solid #ddd",
-        borderRadius: "12px",
-        padding: "16px",
-        margin: "12px",
-        width: "220px",
-    }}
+    className="restaurant-card"
     >
     <h2>{name}</h2>
     <p>⭐ {rating}</p>
