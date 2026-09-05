@@ -3,7 +3,7 @@ import { useState } from "react";
 import RestaurantCard from "./components/RestaurantCard";
 
 function App() {
-const [showTopRated, setShowTopRated] = useState(false);
+
 const restaurants = [
     {
     id: 1,
@@ -24,22 +24,44 @@ const restaurants = [
     deliveryTime: "30 mins",
     },
 ];
+const [searchText, setSearchText] = useState ("");
+const [showTopRated, setShowTopRated] = useState(false);
 
 return (
     <div>
     <h1>Foodie+</h1>
 
-    {restaurants.map((restaurant) => (
-        <RestaurantCard
-        key={restaurant.id}
-        name={restaurant.name}
-        rating={restaurant.rating}
-        deliveryTime={restaurant.deliveryTime}
-        />
-    ))}
+    
+    <input
+    type="text"
+    value={searchText}
+    onChange={(e) => setSearchText(e.target.value)}
+    placeholder="Search restaurants"
+    />
     <button onClick={() => setShowTopRated(!showTopRated)}>
     Top Rated
 </button>
+{restaurants
+  .filter((restaurant) => {
+    if (
+      !restaurant.name
+        .toLowerCase()
+        .includes(searchText.toLowerCase())
+    )
+      return false;
+
+    if (!showTopRated) return true;
+
+    return restaurant.rating >= 4.5;
+  })
+  .map((restaurant) => (
+    <RestaurantCard
+      key={restaurant.id}
+      name={restaurant.name}
+      rating={restaurant.rating}
+      deliveryTime={restaurant.deliveryTime}
+    />
+  ))}
     </div>
     
 );
