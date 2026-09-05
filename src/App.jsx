@@ -28,17 +28,35 @@ const [searchText, setSearchText] = useState ("");
 const [showTopRated, setShowTopRated] = useState(false);
 
 return (
-    <div>
+    <div style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "20px",
+    marginBottom: "30px",
+  }}>
+
+        
     <h1>Foodie+</h1>
 
     
-    <input
+    <input style={{
+  width: "250px",
+  height: "20px",
+  padding: "10px",
+}}
     type="text"
     value={searchText}
     onChange={(e) => setSearchText(e.target.value)}
     placeholder="Search restaurants"
     />
-    <button onClick={() => setShowTopRated(!showTopRated)}>
+    <button  style={{
+  width: "250px",
+  height: "40px",
+  padding: "10px",
+}}
+    
+    onClick={() => setShowTopRated(!showTopRated)}>
     Top Rated
 </button>
 {restaurants
