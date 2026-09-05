@@ -3,29 +3,44 @@ import "./App.css";
 import RestaurantCard from "./components/RestaurantCard";
 
 function App() {
-  const restaurants = [
-    {
-      id: 1,
-      name: "Burger King",
-      rating: 4.5,
-      deliveryTime: "20 mins",
-      image: "https://picsum.photos/300/180?random=1",
-    },
-    {
-      id: 2,
-      name: "KFC",
-      rating: 4.3,
-      deliveryTime: "25 mins",
-      image: "https://picsum.photos/300/180?random=2",
-    },
-    {
-      id: 3,
-      name: "Mc D",
-      rating: 4.8,
-      deliveryTime: "30 mins",
-      image: "https://picsum.photos/300/180?random=3",
-    },
-  ];
+//   const restaurants = [
+//     {
+//       id: 1,
+//       name: "Burger King",
+//       rating: 4.5,
+//       deliveryTime: "20 mins",
+//       image: "https://picsum.photos/300/180?random=1",
+//     },
+//     {
+//       id: 2,
+//       name: "KFC",
+//       rating: 4.3,
+//       deliveryTime: "25 mins",
+//       image: "https://picsum.photos/300/180?random=2",
+//     },
+//     {
+//       id: 3,
+//       name: "Mc D",
+//       rating: 4.8,
+//       deliveryTime: "30 mins",
+//       image: "https://picsum.photos/300/180?random=3",
+//     },
+//   ];
+  const [restaurants, setRestaurants] = useState([]);
+
+  useEffect(() => {
+  const getRestaurants = async () => {
+    const response = await fetch(
+      "https://jsonplaceholder.typicode.com/users"
+    );
+
+    const data = await response.json();
+
+    setRestaurants(data);
+  };
+
+  getRestaurants();
+}, []);
 
   const [searchText, setSearchText] = useState("");
   const [showTopRated, setShowTopRated] = useState(false);
